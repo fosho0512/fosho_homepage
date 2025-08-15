@@ -45,15 +45,24 @@ export default function Contact() {
       }
       
       try {
-        // EmailJS Public Key 가져오기
-        const keyResponse = await fetch('/api/emailjs-key');
-        const keyData = await keyResponse.json();
-        
-        if (!keyData.publicKey) {
-          throw new Error("EmailJS 설정이 누락되었습니다.");
+        // EmailJS Public Key 가져오기 (서버에서)
+        let publicKey;
+        try {
+          const keyResponse = await fetch('/api/emailjs-key');
+          const keyData = await keyResponse.json();
+          publicKey = keyData.publicKey;
+        } catch (keyError) {
+          console.warn('서버에서 키를 가져올 수 없음, 기본값 사용');
+          // 기본값으로 사용자가 제공한 키 사용
+          publicKey = "mWXVV6YaOEOEn8idf";
         }
         
-        emailjs.init(keyData.publicKey);
+        if (!publicKey) {
+          throw new Error("EmailJS Public Key가 설정되지 않았습니다.");
+        }
+        
+        console.log('EmailJS 초기화 중...');
+        emailjs.init(publicKey);
         
         // EmailJS로 이메일 전송
         const emailData = {
@@ -63,22 +72,34 @@ export default function Contact() {
           message: data.message || "문의 내용이 없습니다."
         };
         
-        await emailjs.send(
+        console.log('이메일 전송 중...', emailData);
+        const emailResult = await emailjs.send(
           'service_t5ovtcj',
           'template_clvz9ce',
           emailData
         );
+        console.log('이메일 전송 성공:', emailResult);
         
         // 서버에 데이터 저장
-        return apiRequest("POST", "/api/contact", data);
+        const serverResponse = await apiRequest("POST", "/api/contact", data);
+        console.log('서버 저장 성공');
+        return serverResponse;
       } catch (emailError: any) {
         console.error('EmailJS 오류:', emailError);
+        
+        // EmailJS 오류 상세 분석
         if (emailError.status === 404) {
-          throw new Error("이메일 서비스 설정에 오류가 있습니다. 관리자에게 문의해주세요.");
+          throw new Error("EmailJS 계정 또는 서비스를 찾을 수 없습니다. Public Key를 확인해주세요.");
+        } else if (emailError.status === 401) {
+          throw new Error("EmailJS 인증 실패. Public Key가 올바르지 않습니다.");
+        } else if (emailError.status === 400) {
+          throw new Error("EmailJS 요청 오류. Service ID 또는 Template ID를 확인해주세요.");
         } else if (emailError.text) {
           throw new Error(`이메일 전송 실패: ${emailError.text}`);
+        } else if (emailError.message && emailError.message.includes('json')) {
+          throw new Error("EmailJS 응답 오류. Service ID와 Template ID를 확인해주세요.");
         } else {
-          throw new Error("이메일 전송 중 오류가 발생했습니다.");
+          throw new Error(`이메일 전송 중 오류: ${emailError.message || '알 수 없는 오류'}`);
         }
       }
     },
