@@ -75,7 +75,7 @@ export default function Contact() {
         console.log('이메일 전송 중...', emailData);
         const emailResult = await emailjs.send(
           'service_t5ovtcj',
-          'template_clvz9ce',
+          'template_zuza2zn',
           emailData
         );
         console.log('이메일 전송 성공:', emailResult);
