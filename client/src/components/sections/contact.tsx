@@ -77,7 +77,7 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel>이름 *</FormLabel>
                       <FormControl>
-                        <Input placeholder="홍길동" {...field} />
+                        <Input placeholder="홍길동" className="bg-gray-50 border-gray-200" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -91,7 +91,7 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel>병원명 *</FormLabel>
                       <FormControl>
-                        <Input placeholder="○○치과의원" {...field} />
+                        <Input placeholder="○○치과의원" className="bg-gray-50 border-gray-200" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -105,7 +105,7 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel>연락처 *</FormLabel>
                       <FormControl>
-                        <Input placeholder="010-0000-0000" {...field} />
+                        <Input placeholder="010-0000-0000" className="bg-gray-50 border-gray-200" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
