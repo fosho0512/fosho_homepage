@@ -58,10 +58,10 @@ export default function Home() {
             
             <div className="text-right">
               <p className="text-sm text-blue-200">
-                사업자등록번호: 123-45-67890<br />
-                대표: 홍길동<br />
-                주소: 서울시 강남구 테헤란로 123, 456빌딩 7층<br />
-                이메일: contact@foshomarketing.com
+                사업자등록번호: 223-05-31741<br />
+                대표: 김균한, 박현준<br />
+                주소: 서울특별시 강남구 선릉로93길 54, 6층 6086호<br />
+                이메일: fosho0512@gmail.com
               </p>
             </div>
           </div>

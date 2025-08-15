@@ -177,7 +177,7 @@ export default function Contact() {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <MapPin className="text-soft-teal h-5 w-5" />
-                  <span>서울시 강남구 테헤란로 123, 456빌딩 7층</span>
+                  <span>서울특별시 강남구 선릉로93길 54, 6층 6086호</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="text-soft-teal h-5 w-5" />
@@ -185,7 +185,7 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="text-soft-teal h-5 w-5" />
-                  <span>contact@foshomarketing.com</span>
+                  <span>fosho0512@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Clock className="text-soft-teal h-5 w-5" />
@@ -194,14 +194,7 @@ export default function Contact() {
               </div>
             </div>
             
-            {/* Naver Map Placeholder */}
-            <div className="bg-gray-200 rounded-2xl h-64 flex items-center justify-center">
-              <div className="text-center text-gray-500">
-                <MapPin className="h-12 w-12 mx-auto mb-4" />
-                <p>네이버 지도</p>
-                <p className="text-sm">강남구 테헤란로 123</p>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>
