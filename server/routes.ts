@@ -5,6 +5,15 @@ import { insertContactSchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Get EmailJS public key
+  app.get("/api/emailjs-key", (req, res) => {
+    const publicKey = process.env.EMAILJS_PUBLIC_KEY;
+    if (!publicKey) {
+      return res.status(500).json({ error: "EmailJS public key not configured" });
+    }
+    res.json({ publicKey });
+  });
+
   // Contact form submission
   app.post("/api/contact", async (req, res) => {
     try {

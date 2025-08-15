@@ -33,25 +33,54 @@ export default function Contact() {
         throw new Error("개인정보 수집 및 이용에 동의해주세요.");
       }
       
-      // EmailJS 초기화
-      emailjs.init("mWXVV6YaOEOEn8idf");
+      // 폼 유효성 검사
+      if (!data.name.trim()) {
+        throw new Error("이름을 입력해주세요.");
+      }
+      if (!data.hospitalName.trim()) {
+        throw new Error("병원명을 입력해주세요.");
+      }
+      if (!data.phoneNumber.trim()) {
+        throw new Error("연락처를 입력해주세요.");
+      }
       
-      // EmailJS로 이메일 전송
-      const emailData = {
-        name: data.name,
-        hospital: data.hospitalName,
-        phone: data.phoneNumber,
-        message: data.message || "문의 내용이 없습니다."
-      };
-      
-      await emailjs.send(
-        'service_t5ovtcj',
-        'template_clvz9ce',
-        emailData
-      );
-      
-      // 서버에 데이터 저장
-      return apiRequest("POST", "/api/contact", data);
+      try {
+        // EmailJS Public Key 가져오기
+        const keyResponse = await fetch('/api/emailjs-key');
+        const keyData = await keyResponse.json();
+        
+        if (!keyData.publicKey) {
+          throw new Error("EmailJS 설정이 누락되었습니다.");
+        }
+        
+        emailjs.init(keyData.publicKey);
+        
+        // EmailJS로 이메일 전송
+        const emailData = {
+          name: data.name,
+          hospital: data.hospitalName,
+          phone: data.phoneNumber,
+          message: data.message || "문의 내용이 없습니다."
+        };
+        
+        await emailjs.send(
+          'service_t5ovtcj',
+          'template_clvz9ce',
+          emailData
+        );
+        
+        // 서버에 데이터 저장
+        return apiRequest("POST", "/api/contact", data);
+      } catch (emailError: any) {
+        console.error('EmailJS 오류:', emailError);
+        if (emailError.status === 404) {
+          throw new Error("이메일 서비스 설정에 오류가 있습니다. 관리자에게 문의해주세요.");
+        } else if (emailError.text) {
+          throw new Error(`이메일 전송 실패: ${emailError.text}`);
+        } else {
+          throw new Error("이메일 전송 중 오류가 발생했습니다.");
+        }
+      }
     },
     onSuccess: async (response) => {
       const result = await response.json();
@@ -64,15 +93,34 @@ export default function Contact() {
     },
     onError: (error: any) => {
       console.error('상담 신청 오류:', error);
+      
+      // 구체적인 오류 메시지 표시
+      let errorMessage = "상담 신청 중 오류가 발생했습니다.";
+      
+      if (error.message) {
+        errorMessage = error.message;
+      } else if (error.status === 404) {
+        errorMessage = "이메일 서비스에 문제가 있습니다. 관리자에게 문의해주세요.";
+      } else if (error.status) {
+        errorMessage = `서버 오류 (${error.status}): 잠시 후 다시 시도해주세요.`;
+      }
+      
       toast({
         title: "상담 신청 실패",
-        description: error.message || "상담 신청 중 오류가 발생했습니다. 다시 시도해주세요.",
+        description: errorMessage,
         variant: "destructive",
       });
     },
   });
 
   const onSubmit = (data: InsertContact) => {
+    // 추가 폼 검증
+    const errors = form.formState.errors;
+    if (Object.keys(errors).length > 0) {
+      console.log('폼 유효성 검사 오류:', errors);
+      return;
+    }
+    
     contactMutation.mutate(data);
   };
 
