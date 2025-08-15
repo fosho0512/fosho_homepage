@@ -1,4 +1,29 @@
+import { useState, useEffect } from "react";
+import image1 from "@assets/1_1755218402779.jpg";
+import image2 from "@assets/2_1755218402782.jpg";
+import image3 from "@assets/3_1755218402781.jpg";
+import image4 from "@assets/4_1755218402780.jpg";
+
 export default function Hero() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const images = [
+    { src: image1, alt: "Marketing team collaboration meeting" },
+    { src: image2, alt: "Digital marketing workspace with Naver platform" },
+    { src: image3, alt: "Medical marketing content production" },
+    { src: image4, alt: "Healthcare professionals analyzing marketing data" }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -11,13 +36,18 @@ export default function Hero() {
       {/* Background overlay */}
       <div className="absolute inset-0 bg-black/20"></div>
       
-      {/* Background image */}
+      {/* Background image carousel */}
       <div className="absolute inset-0">
-        <img 
-          src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080" 
-          alt="Modern healthcare professionals in meeting with laptops and medical charts" 
-          className="w-full h-full object-cover opacity-20"
-        />
+        {images.map((image, index) => (
+          <img 
+            key={index}
+            src={image.src} 
+            alt={image.alt} 
+            className={`w-full h-full object-cover opacity-20 absolute transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-20' : 'opacity-0'
+            }`}
+          />
+        ))}
       </div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
