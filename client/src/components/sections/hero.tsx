@@ -33,19 +33,34 @@ export default function Hero() {
 
   return (
     <section id="hero" className="min-h-screen gradient-bg relative overflow-hidden">
-      {/* Background overlay */}
-      <div className="absolute inset-0 bg-black/20"></div>
-      
-      {/* Background image carousel */}
-      <div className="absolute inset-0">
-        <img 
-          src={images[currentImageIndex].src} 
-          alt={images[currentImageIndex].alt} 
-          className="w-full h-full object-cover opacity-20 transition-opacity duration-1000"
-        />
+      {/* Fixed background image with slide transition */}
+      <div className="fixed inset-0 z-0">
+        <div 
+          className="flex h-full w-full transition-transform duration-1000 ease-in-out"
+          style={{ 
+            transform: `translateX(-${currentImageIndex * 100}vw)`,
+            width: `${images.length * 100}vw`
+          }}
+        >
+          {images.map((image, index) => (
+            <div 
+              key={index}
+              className="w-screen h-full flex-shrink-0"
+            >
+              <img 
+                src={image.src} 
+                alt={image.alt} 
+                className="w-full h-full object-cover opacity-20"
+              />
+            </div>
+          ))}
+        </div>
       </div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+      {/* Background overlay */}
+      <div className="absolute inset-0 bg-black/20 z-1"></div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center justify-center">
         <div className="text-center text-white space-y-8 fade-in">
           <h1 className="font-english text-4xl md:text-6xl font-bold mb-4">
             FOR SURE, YOUR SUCCESS
