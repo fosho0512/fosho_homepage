@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactSchema } from "@shared/schema";
 import { z } from "zod";
+import { sendContactNotification } from "./email";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form submission
@@ -11,8 +12,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedData = insertContactSchema.parse(req.body);
       const contact = await storage.createContact(validatedData);
       
-      // In a real application, you would send an email here
+      // Send email notification
+      const emailSent = await sendContactNotification({
+        name: validatedData.name,
+        hospitalName: validatedData.hospitalName,
+        phoneNumber: validatedData.phoneNumber,
+        message: validatedData.message
+      });
+      
       console.log("New contact form submission:", contact);
+      console.log("Email notification sent:", emailSent);
       
       res.json({ success: true, message: "문의가 접수되었습니다. 빠른 시일 내에 연락드리겠습니다." });
     } catch (error) {
