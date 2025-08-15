@@ -10,7 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import consultationImage from "@assets/Image_fx (1)_1755219766396.jpg";
+import consultationImage from "@assets/Image_fx (2)_1755220067017.jpg";
 
 export default function Contact() {
   const [privacyConsent, setPrivacyConsent] = useState(false);
@@ -65,101 +65,109 @@ export default function Contact() {
           <p className="text-lg text-gray-600">병원 마케팅의 새로운 시작, 포쇼마케팅과 함께하세요</p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Contact Form */}
-          <div className="bg-white rounded-2xl shadow-lg p-8 fade-in">
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>이름 *</FormLabel>
-                      <FormControl>
-                        <Input placeholder="홍길동" className="bg-gray-50 border-gray-200" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="hospitalName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>병원명 *</FormLabel>
-                      <FormControl>
-                        <Input placeholder="○○치과의원" className="bg-gray-50 border-gray-200" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="phoneNumber"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>연락처 *</FormLabel>
-                      <FormControl>
-                        <Input placeholder="010-0000-0000" className="bg-gray-50 border-gray-200" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>문의 내용</FormLabel>
-                      <FormControl>
-                        <Textarea 
-                          rows={4} 
-                          placeholder="마케팅 관련 문의사항을 자세히 적어주세요" 
-                          className="bg-gray-50 border-gray-200"
-                          {...field} 
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <div className="flex items-start space-x-3">
-                  <Checkbox 
-                    id="privacy" 
-                    checked={privacyConsent}
-                    onCheckedChange={(checked) => setPrivacyConsent(checked as boolean)}
+        <div className="bg-white rounded-3xl shadow-xl overflow-hidden fade-in">
+          <div className="grid lg:grid-cols-2">
+            {/* Contact Form */}
+            <div className="p-8 lg:p-12">
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">무료 상담 신청</h3>
+                <p className="text-gray-600">전문가와 직접 상담받으세요</p>
+              </div>
+              
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>이름 *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="홍길동" className="bg-gray-50 border-gray-200" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                  <label htmlFor="privacy" className="text-sm text-gray-600">
-                    개인정보 수집 및 이용에 동의합니다. (필수)
-                  </label>
-                </div>
-                
-                <Button 
-                  type="submit" 
-                  className="w-full bg-warm-orange hover:bg-orange-500 text-white py-4 rounded-lg font-semibold text-lg"
-                  disabled={contactMutation.isPending}
-                >
-                  {contactMutation.isPending ? "전송 중..." : "무료 상담 신청"}
-                </Button>
-              </form>
-            </Form>
-          </div>
-          
-          {/* Consultation Image */}
-          <div className="fade-in">
-            <img 
-              src={consultationImage} 
-              alt="Professional marketing consultant at desk with analytics dashboard" 
-              className="w-full h-auto rounded-2xl shadow-lg"
-            />
+                  
+                  <FormField
+                    control={form.control}
+                    name="hospitalName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>병원명 *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="○○치과의원" className="bg-gray-50 border-gray-200" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="phoneNumber"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>연락처 *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="010-0000-0000" className="bg-gray-50 border-gray-200" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>문의 내용</FormLabel>
+                        <FormControl>
+                          <Textarea 
+                            rows={4} 
+                            placeholder="마케팅 관련 문의사항을 자세히 적어주세요" 
+                            className="bg-gray-50 border-gray-200"
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <div className="flex items-start space-x-3">
+                    <Checkbox 
+                      id="privacy" 
+                      checked={privacyConsent}
+                      onCheckedChange={(checked) => setPrivacyConsent(checked as boolean)}
+                    />
+                    <label htmlFor="privacy" className="text-sm text-gray-600">
+                      개인정보 수집 및 이용에 동의합니다. (필수)
+                    </label>
+                  </div>
+                  
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-warm-orange hover:bg-orange-500 text-white py-4 rounded-lg font-semibold text-lg"
+                    disabled={contactMutation.isPending}
+                  >
+                    {contactMutation.isPending ? "전송 중..." : "무료 상담 신청"}
+                  </Button>
+                </form>
+              </Form>
+            </div>
+            
+            {/* Consultation Image */}
+            <div className="relative">
+              <img 
+                src={consultationImage} 
+                alt="Professional marketing consultant with analytics dashboard" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20"></div>
+            </div>
           </div>
         </div>
       </div>
