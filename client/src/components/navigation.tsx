@@ -1,8 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -23,10 +34,14 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+    <nav className={`fixed top-0 w-full backdrop-blur-sm shadow-sm z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white text-gray-900' : 'bg-transparent text-white'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div className="font-english font-bold text-2xl text-medical-blue">
+          <div className={`font-english font-bold text-2xl transition-colors ${
+            isScrolled ? 'text-medical-blue' : 'text-white'
+          }`}>
             FOSHO
           </div>
           
@@ -36,7 +51,9 @@ export default function Navigation() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-gray-700 hover:text-medical-blue transition-colors"
+                className={`transition-colors hover:opacity-80 ${
+                  isScrolled ? 'text-gray-700 hover:text-medical-blue' : 'text-white hover:text-gray-200'
+                }`}
               >
                 {item.label}
               </button>
@@ -49,22 +66,30 @@ export default function Navigation() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <X className="text-medical-blue h-6 w-6" />
+              <X className={`h-6 w-6 transition-colors ${
+                isScrolled ? 'text-medical-blue' : 'text-white'
+              }`} />
             ) : (
-              <Menu className="text-medical-blue h-6 w-6" />
+              <Menu className={`h-6 w-6 transition-colors ${
+                isScrolled ? 'text-medical-blue' : 'text-white'
+              }`} />
             )}
           </button>
         </div>
         
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden pb-4">
+          <div className={`md:hidden pb-4 transition-colors ${
+            isScrolled ? 'bg-white' : 'bg-black/20 backdrop-blur-sm'
+          }`}>
             <div className="flex flex-col space-y-2">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-left py-2 text-gray-700 hover:text-medical-blue transition-colors"
+                  className={`text-left py-2 transition-colors hover:opacity-80 ${
+                    isScrolled ? 'text-gray-700 hover:text-medical-blue' : 'text-white hover:text-gray-200'
+                  }`}
                 >
                   {item.label}
                 </button>
