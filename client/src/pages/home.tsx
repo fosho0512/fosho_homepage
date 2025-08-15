@@ -46,7 +46,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-medical-blue text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 items-start">
             <div>
               <div className="font-english font-bold text-2xl mb-4">FOSHO MARKETING</div>
               <p className="text-blue-200 mb-4">병·의원 전문 마케팅 대행사</p>
@@ -56,7 +56,8 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="text-right">
+            <div className="text-right mt-0">
+              <div className="font-english font-bold text-2xl mb-4 opacity-0">COMPANY INFO</div>
               <p className="text-sm text-blue-200">
                 사업자등록번호: 223-05-31741<br />
                 대표: 김균한, 박현준<br />
