@@ -10,7 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { MapPin, Phone, Mail, Clock, MessageCircle, MessageSquare } from "lucide-react";
+import consultationImage from "@assets/Image_fx (1)_1755219766396.jpg";
 
 export default function Contact() {
   const [privacyConsent, setPrivacyConsent] = useState(false);
@@ -65,7 +65,7 @@ export default function Contact() {
           <p className="text-lg text-gray-600">병원 마케팅의 새로운 시작, 포쇼마케팅과 함께하세요</p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Contact Form */}
           <div className="bg-white rounded-2xl shadow-lg p-8 fade-in">
             <Form {...form}>
@@ -151,35 +151,15 @@ export default function Contact() {
                 </Button>
               </form>
             </Form>
-            
-
           </div>
           
-          {/* Office Info & Map */}
+          {/* Consultation Image */}
           <div className="fade-in">
-            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-              <h3 className="text-xl font-bold mb-6">오시는 길</h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <MapPin className="text-soft-teal h-5 w-5" />
-                  <span>서울특별시 강남구 선릉로93길 54, 6층 6086호</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Phone className="text-soft-teal h-5 w-5" />
-                  <span>02-1234-5678</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Mail className="text-soft-teal h-5 w-5" />
-                  <span>fosho0512@gmail.com</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Clock className="text-soft-teal h-5 w-5" />
-                  <span>평일 09:00 - 18:00 (주말/공휴일 휴무)</span>
-                </div>
-              </div>
-            </div>
-            
-
+            <img 
+              src={consultationImage} 
+              alt="Professional marketing consultant at desk with analytics dashboard" 
+              className="w-full h-auto rounded-2xl shadow-lg"
+            />
           </div>
         </div>
       </div>
