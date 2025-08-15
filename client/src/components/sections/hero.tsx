@@ -33,19 +33,20 @@ export default function Hero() {
 
   return (
     <section id="hero" className="min-h-screen gradient-bg relative overflow-hidden">
-      {/* Fixed background image with slide transition */}
-      <div className="fixed inset-0 z-0">
+      {/* Background image with slide transition - only within hero section */}
+      <div className="absolute inset-0 z-0">
         <div 
           className="flex h-full w-full transition-transform duration-1000 ease-in-out"
           style={{ 
-            transform: `translateX(-${currentImageIndex * 100}vw)`,
-            width: `${images.length * 100}vw`
+            transform: `translateX(-${currentImageIndex * 100}%)`,
+            width: `${images.length * 100}%`
           }}
         >
           {images.map((image, index) => (
             <div 
               key={index}
-              className="w-screen h-full flex-shrink-0"
+              className="w-full h-full flex-shrink-0"
+              style={{ width: `${100 / images.length}%` }}
             >
               <img 
                 src={image.src} 
