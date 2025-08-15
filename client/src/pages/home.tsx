@@ -7,6 +7,7 @@ import Services from "@/components/sections/services";
 import Process from "@/components/sections/process";
 import Results from "@/components/sections/results";
 import Contact from "@/components/sections/contact";
+import foshoLogo from "@assets/fosho_logo_1755230179777.png";
 
 export default function Home() {
   useEffect(() => {
@@ -48,7 +49,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8 items-start">
             <div>
-              <div className="font-english font-bold text-2xl mb-4">FOSHO MARKETING</div>
+              <div className="mb-4">
+                <img 
+                  src={foshoLogo} 
+                  alt="FOSHO Marketing" 
+                  className="h-12 w-auto mb-2"
+                />
+              </div>
               <p className="text-blue-200 mb-4">병·의원 전문 마케팅 대행사</p>
               <p className="text-sm text-blue-200">
                 확실한 결과로, 확실한 성장을.<br />

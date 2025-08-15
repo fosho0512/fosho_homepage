@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import foshoLogo from "@assets/fosho_logo_1755230179777.png";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,10 +40,12 @@ export default function Navigation() {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div className={`font-english font-bold text-2xl transition-colors ${
-            isScrolled ? 'text-medical-blue' : 'text-white'
-          }`}>
-            FOSHO
+          <div className="flex items-center">
+            <img 
+              src={foshoLogo} 
+              alt="FOSHO Marketing" 
+              className="h-8 w-auto"
+            />
           </div>
           
           {/* Desktop Navigation */}
