@@ -38,16 +38,11 @@ export default function Hero() {
       
       {/* Background image carousel */}
       <div className="absolute inset-0">
-        {images.map((image, index) => (
-          <img 
-            key={index}
-            src={image.src} 
-            alt={image.alt} 
-            className={`w-full h-full object-cover opacity-20 absolute transition-opacity duration-1000 ${
-              index === currentImageIndex ? 'opacity-20' : 'opacity-0'
-            }`}
-          />
-        ))}
+        <img 
+          src={images[currentImageIndex].src} 
+          alt={images[currentImageIndex].alt} 
+          className="w-full h-full object-cover opacity-20 transition-opacity duration-1000"
+        />
       </div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
