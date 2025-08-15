@@ -122,6 +122,7 @@ export default function Contact() {
                         <Textarea 
                           rows={4} 
                           placeholder="마케팅 관련 문의사항을 자세히 적어주세요" 
+                          className="bg-gray-50 border-gray-200"
                           {...field} 
                         />
                       </FormControl>
@@ -151,23 +152,7 @@ export default function Contact() {
               </form>
             </Form>
             
-            {/* Additional Contact Methods */}
-            <div className="flex space-x-4 mt-8">
-              <Button 
-                className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-gray-800 py-3 px-4 rounded-lg font-medium"
-                onClick={() => window.open("https://pf.kakao.com", "_blank")}
-              >
-                <MessageCircle className="mr-2 h-4 w-4" />
-                카카오톡 상담
-              </Button>
-              <Button 
-                className="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-lg font-medium"
-                onClick={() => window.open("https://talk.naver.com", "_blank")}
-              >
-                <MessageSquare className="mr-2 h-4 w-4" />
-                네이버 톡톡
-              </Button>
-            </div>
+
           </div>
           
           {/* Office Info & Map */}
