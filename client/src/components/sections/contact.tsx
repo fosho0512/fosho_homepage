@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import consultationImage from "@assets/Image_fx (2)_1755220067017.jpg";
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [privacyConsent, setPrivacyConsent] = useState(false);
@@ -31,21 +32,41 @@ export default function Contact() {
       if (!privacyConsent) {
         throw new Error("개인정보 수집 및 이용에 동의해주세요.");
       }
+      
+      // EmailJS 초기화
+      emailjs.init("mWXVV6YaOEOEn8idf");
+      
+      // EmailJS로 이메일 전송
+      const emailData = {
+        name: data.name,
+        hospital: data.hospitalName,
+        phone: data.phoneNumber,
+        message: data.message || "문의 내용이 없습니다."
+      };
+      
+      await emailjs.send(
+        'service_t5ovtcj',
+        'template_clvz9ce',
+        emailData
+      );
+      
+      // 서버에 데이터 저장
       return apiRequest("POST", "/api/contact", data);
     },
     onSuccess: async (response) => {
       const result = await response.json();
       toast({
-        title: "문의 접수 완료",
-        description: result.message,
+        title: "상담 신청 완료",
+        description: "상담 신청이 성공적으로 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.",
       });
       form.reset();
       setPrivacyConsent(false);
     },
     onError: (error: any) => {
+      console.error('상담 신청 오류:', error);
       toast({
-        title: "문의 접수 실패",
-        description: error.message || "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
+        title: "상담 신청 실패",
+        description: error.message || "상담 신청 중 오류가 발생했습니다. 다시 시도해주세요.",
         variant: "destructive",
       });
     },
