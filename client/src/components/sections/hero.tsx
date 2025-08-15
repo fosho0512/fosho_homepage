@@ -37,12 +37,20 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/20"></div>
       
       {/* Background image carousel */}
-      <div className="absolute inset-0">
-        <img 
-          src={images[currentImageIndex].src} 
-          alt={images[currentImageIndex].alt} 
-          className="w-full h-full object-cover opacity-20 transition-opacity duration-1000"
-        />
+      <div className="absolute inset-0 overflow-hidden">
+        <div 
+          className="flex transition-transform duration-1000 ease-in-out h-full"
+          style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+        >
+          {images.map((image, index) => (
+            <img 
+              key={index}
+              src={image.src} 
+              alt={image.alt} 
+              className="w-full h-full object-cover opacity-20 flex-shrink-0"
+            />
+          ))}
+        </div>
       </div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
