@@ -65,6 +65,7 @@ export default function Home() {
             
             <div className="text-right mt-0">
               <div className="font-english font-bold text-2xl mb-4 opacity-0">COMPANY INFO</div>
+              <div className="mb-4 text-blue-200 opacity-0">Spacer</div>
               <p className="text-sm text-blue-200">
                 사업자등록번호: 223-05-31741<br />
                 대표: 김균한, 박현준<br />
