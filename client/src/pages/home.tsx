@@ -63,10 +63,8 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="text-right mt-0">
-              <div className="font-english font-bold text-2xl mb-4 opacity-0">COMPANY INFO</div>
-              <div className="mb-4 text-blue-200 opacity-0">Spacer</div>
-              <p className="text-sm text-blue-200">
+            <div className="text-right">
+              <p className="text-sm text-blue-200 mt-16">
                 사업자등록번호: 223-05-31741<br />
                 대표: 김균한, 박현준<br />
                 주소: 서울특별시 강남구 선릉로93길 54, 6층 6086호<br />
