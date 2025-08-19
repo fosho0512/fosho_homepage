@@ -14,10 +14,7 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'GET') {
-    const publicKey = process.env.EMAILJS_PUBLIC_KEY;
-    if (!publicKey) {
-      return res.status(500).json({ error: "EmailJS public key not configured" });
-    }
+    const publicKey = process.env.EMAILJS_PUBLIC_KEY || "ADrMZJpxjlRV0PkDL";
     res.json({ publicKey });
   } else {
     res.setHeader('Allow', ['GET']);
