@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       borderRadius: {
@@ -62,12 +62,12 @@ export default {
           ring: "var(--sidebar-ring)",
         },
         // Fosho Marketing Brand Colors
-        "medical-blue": "var(--medical-blue)",
-        "soft-teal": "var(--soft-teal)",
-        "warm-orange": "var(--warm-orange)",
-        "cool-gray": "var(--cool-gray)",
-        "deep-blue": "var(--deep-blue)",
-        "aqua-blue": "var(--aqua-blue)",
+        'medical-blue': 'var(--medical-blue)',
+        'soft-teal': 'var(--soft-teal)',
+        'warm-orange': 'var(--warm-orange)',
+        'cool-gray': 'var(--cool-gray)',
+        'deep-blue': 'var(--deep-blue)',
+        'aqua-blue': 'var(--aqua-blue)',
       },
       fontFamily: {
         sans: ["var(--font-sans)"],
