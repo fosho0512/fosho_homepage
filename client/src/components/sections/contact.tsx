@@ -151,16 +151,17 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-cool-gray">
+    <section id="contact" className="py-20 stats-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 fade-in">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             지금 상담하세요
           </h2>
           <p className="text-lg text-gray-600">병원 마케팅의 새로운 시작, 포쇼마케팅과 함께하세요</p>
+          <div className="w-20 h-1 bg-soft-teal mx-auto mt-4"></div>
         </div>
         
-        <div className="bg-white rounded-3xl shadow-xl overflow-hidden fade-in">
+        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden fade-in card-hover">
           <div className="grid lg:grid-cols-2">
             {/* Contact Form */}
             <div className="p-8 lg:p-12">

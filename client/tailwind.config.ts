@@ -73,12 +73,12 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
         // Fosho Marketing Brand Colors
-        'medical-blue': "hsl(var(--medical-blue))",
-        'soft-teal': "hsl(var(--soft-teal))",
-        'warm-orange': "hsl(var(--warm-orange))",
-        'cool-gray': "hsl(var(--cool-gray))",
-        'deep-blue': "hsl(var(--deep-blue))",
-        'aqua-blue': "hsl(var(--aqua-blue))",
+        'medical-blue': "#2c5aa0",
+        'soft-teal': "#14b8a6", 
+        'warm-orange': "#f59e0b",
+        'cool-gray': "#f1f5f9",
+        'deep-blue': "#1e40af",
+        'aqua-blue': "#0891b2",
       },
       borderRadius: {
         lg: "var(--radius)",

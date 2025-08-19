@@ -2,8 +2,17 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
-// Trigger animations on page load and intersection
-const observeAnimations = () => {
+// Initialize enhanced animations and effects
+const initializeEffects = () => {
+  // Trigger all animations immediately for better UX
+  const animatedElements = document.querySelectorAll('.fade-in, .slide-in-up');
+  animatedElements.forEach((el, index) => {
+    setTimeout(() => {
+      el.classList.add('animate');
+    }, index * 50);
+  });
+
+  // Add intersection observer for scroll animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -12,13 +21,10 @@ const observeAnimations = () => {
     });
   }, { threshold: 0.1 });
 
-  // Observe all fade-in elements
-  document.querySelectorAll('.fade-in, .slide-in-up').forEach((el) => {
-    observer.observe(el);
-  });
+  animatedElements.forEach((el) => observer.observe(el));
 };
 
-// Initialize animations after React renders
-setTimeout(observeAnimations, 100);
+// Initialize after DOM is ready
+setTimeout(initializeEffects, 100);
 
 createRoot(document.getElementById("root")!).render(<App />);

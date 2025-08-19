@@ -32,27 +32,27 @@ export default function About() {
             </p>
             
             <div className="grid md:grid-cols-3 gap-6 mt-12">
-              <div className="text-center p-6 bg-cool-gray rounded-xl">
-                <div className="w-16 h-16 bg-medical-blue rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="text-center p-6 bg-white rounded-xl shadow-lg card-hover">
+                <div className="w-16 h-16 bg-medical-blue rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <Stethoscope className="text-white h-8 w-8" />
                 </div>
-                <h3 className="font-semibold mb-2">병원 전문성</h3>
+                <h3 className="font-semibold mb-2 text-gray-900">병원 전문성</h3>
                 <p className="text-sm text-gray-600">의료 시장과 진료 특성에 최적화된 전략</p>
               </div>
               
-              <div className="text-center p-6 bg-cool-gray rounded-xl">
-                <div className="w-16 h-16 bg-soft-teal rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="text-center p-6 bg-white rounded-xl shadow-lg card-hover">
+                <div className="w-16 h-16 bg-soft-teal rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <Rocket className="text-white h-8 w-8" />
                 </div>
-                <h3 className="font-semibold mb-2">실행 중심</h3>
+                <h3 className="font-semibold mb-2 text-gray-900">실행 중심</h3>
                 <p className="text-sm text-gray-600">직접 운영·관리로 성과 보장</p>
               </div>
               
-              <div className="text-center p-6 bg-cool-gray rounded-xl">
-                <div className="w-16 h-16 bg-warm-orange rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="text-center p-6 bg-white rounded-xl shadow-lg card-hover">
+                <div className="w-16 h-16 bg-warm-orange rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <Handshake className="text-white h-8 w-8" />
                 </div>
-                <h3 className="font-semibold mb-2">신뢰와 투명성</h3>
+                <h3 className="font-semibold mb-2 text-gray-900">신뢰와 투명성</h3>
                 <p className="text-sm text-gray-600">과장 없는 결과 중심 보고</p>
               </div>
             </div>

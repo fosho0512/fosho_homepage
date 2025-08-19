@@ -68,13 +68,13 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
             <button
               onClick={() => scrollToSection('contact')}
-              className="bg-warm-orange hover:bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg"
+              className="btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg"
             >
               무료 상담 신청
             </button>
             <button
               onClick={() => scrollToSection('about')}
-              className="border-2 border-white text-white hover:bg-white hover:text-medical-blue px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
+              className="btn-secondary text-white px-8 py-4 rounded-lg font-semibold text-lg"
             >
               포쇼마케팅 소개 보기
             </button>
