@@ -1,5 +1,4 @@
-import { type User, type InsertUser, type Contact, type InsertContact } from "@shared/schema";
-import { randomUUID } from "crypto";
+import { type User, type InsertUser, type Contact, type InsertContact } from "../shared/schema";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
@@ -29,14 +28,14 @@ export class MemStorage implements IStorage {
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
+    const id = crypto.randomUUID();
     const user: User = { ...insertUser, id };
     this.users.set(id, user);
     return user;
   }
 
   async createContact(insertContact: InsertContact): Promise<Contact> {
-    const id = randomUUID();
+    const id = crypto.randomUUID();
     const contact: Contact = { 
       ...insertContact,
       message: insertContact.message || null,

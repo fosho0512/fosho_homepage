@@ -1,6 +1,8 @@
 # Overview
 
-This is a Korean hospital marketing agency website called "포쇼마케팅" (FOSHO Marketing) that provides specialized marketing services for hospitals and medical practices. The application is a full-stack web solution featuring a modern React frontend with a comprehensive landing page showcasing services, success stories, and a contact form system. The backend handles contact form submissions and provides a RESTful API for managing inquiries.
+This is a Korean hospital marketing agency website called "포쇼마케팅" (FOSHO Marketing) that provides specialized marketing services for hospitals and medical practices. The application has been restructured for Vercel deployment, featuring a modern React frontend with a comprehensive landing page showcasing services, success stories, and a contact form system. The backend uses Vercel serverless functions to handle contact form submissions and API requests.
+
+**Recent Changes (2025-08-19)**: Restructured entire project for Vercel deployment by moving all necessary files into the client folder, converting Express.js APIs to Vercel serverless functions, and setting up proper build configuration for static site deployment.
 
 # User Preferences
 
@@ -17,13 +19,14 @@ Preferred communication style: Simple, everyday language.
 - **Styling**: Tailwind CSS with custom Korean typography (Noto Sans KR) and English fonts (Poppins)
 - **Build Tool**: Vite for fast development and optimized production builds
 
-## Backend Architecture
-- **Runtime**: Node.js with Express.js framework
+## Backend Architecture (Vercel Serverless)
+- **Runtime**: Vercel Node.js serverless functions
 - **Language**: TypeScript with ES modules for modern JavaScript features
-- **API Design**: RESTful endpoints for contact form submission and retrieval
-- **Data Storage**: In-memory storage implementation with interface for future database integration
-- **Error Handling**: Centralized error handling middleware with proper HTTP status codes
+- **API Design**: Vercel API Routes for contact form submission and EmailJS key retrieval
+- **Data Storage**: In-memory storage implementation (suitable for serverless environment)
+- **Error Handling**: Function-level error handling with proper HTTP status codes and CORS support
 - **Validation**: Zod schemas shared between frontend and backend for consistent validation
+- **Deployment**: Optimized for Vercel with proper routing and static asset handling
 
 ## Data Storage Solutions
 - **Current**: In-memory storage using Map data structures for development and testing
@@ -77,5 +80,9 @@ Preferred communication style: Simple, everyday language.
 - **Google Fonts**: Noto Sans KR for Korean text and Poppins for English text
 - **Unsplash Images**: Professional healthcare and medical imagery
 
-## Session Management
-- **connect-pg-simple**: PostgreSQL session store for Express sessions (configured but not actively used)
+## Vercel Deployment Configuration
+- **Root Directory**: Client folder is configured as the root directory for Vercel deployment
+- **API Routes**: Located in `client/api/` for serverless function handling
+- **Build Output**: Static files generated in `client/dist/` for CDN delivery
+- **Environment Variables**: EmailJS configuration managed through Vercel environment settings
+- **Asset Handling**: Optimized image processing and proper TypeScript asset declarations
