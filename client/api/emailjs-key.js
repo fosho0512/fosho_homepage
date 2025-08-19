@@ -14,11 +14,15 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'GET') {
-    const publicKey = process.env.EMAILJS_PUBLIC_KEY;
-    if (!publicKey) {
-      return res.status(500).json({ error: "EmailJS public key not configured" });
-    }
-    res.json({ publicKey });
+    const publicKey = process.env.EMAILJS_PUBLIC_KEY || "ADrMZJpxjlRV0PkDL";
+    const serviceId = process.env.EMAILJS_SERVICE_ID || "service_t5ovtcj";
+    const templateId = process.env.EMAILJS_TEMPLATE_ID || "template_zuza2zn";
+    
+    res.json({ 
+      publicKey,
+      serviceId,
+      templateId
+    });
   } else {
     res.setHeader('Allow', ['GET']);
     res.status(405).end(`Method ${req.method} Not Allowed`);

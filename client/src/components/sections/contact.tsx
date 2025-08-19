@@ -45,16 +45,20 @@ export default function Contact() {
       }
       
       try {
-        // EmailJS Public Key 가져오기 (서버에서)
-        let publicKey;
+        // EmailJS 설정 가져오기 (서버에서)
+        let publicKey, serviceId, templateId;
         try {
-          const keyResponse = await fetch('/api/emailjs-key');
-          const keyData = await keyResponse.json();
-          publicKey = keyData.publicKey;
+          const configResponse = await fetch('/api/emailjs-key');
+          const configData = await configResponse.json();
+          publicKey = configData.publicKey;
+          serviceId = configData.serviceId;
+          templateId = configData.templateId;
         } catch (keyError) {
-          console.warn('서버에서 키를 가져올 수 없음, 기본값 사용');
-          // 기본값으로 사용자가 제공한 키 사용
-          publicKey = "mWXVV6YaOEOEn8idf";
+          console.warn('서버에서 설정을 가져올 수 없음, 기본값 사용');
+          // 기본값 사용
+          publicKey = "ADrMZJpxjlRV0PkDL";
+          serviceId = 'service_t5ovtcj';
+          templateId = 'template_zuza2zn';
         }
         
         if (!publicKey) {
@@ -73,9 +77,10 @@ export default function Contact() {
         };
         
         console.log('이메일 전송 중...', emailData);
+        
         const emailResult = await emailjs.send(
-          'service_t5ovtcj',
-          'template_zuza2zn',
+          serviceId,
+          templateId,
           emailData
         );
         console.log('이메일 전송 성공:', emailResult);

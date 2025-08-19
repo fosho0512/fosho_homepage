@@ -21,7 +21,7 @@
 4. **환경 변수 설정**
    - Vercel 대시보드에서 다음 환경 변수 추가:
    ```
-   EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+   EMAILJS_PUBLIC_KEY=ADrMZJpxjlRV0PkDL
    EMAILJS_SERVICE_ID=your_emailjs_service_id  
    EMAILJS_TEMPLATE_ID=your_emailjs_template_id
    ```
