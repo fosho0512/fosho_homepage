@@ -54,12 +54,91 @@
   --spacing: 0.25rem;
   
   /* Fosho Marketing Brand Colors */
-  --medical-blue: hsl(208 62% 34%);
-  --soft-teal: hsl(174 70% 47%);
-  --warm-orange: hsl(32 94% 65%);
-  --cool-gray: hsl(214 22% 96%);
-  --deep-blue: hsl(208 87% 23%);
-  --aqua-blue: hsl(193 100% 43%);
+  --medical-blue: 208 62% 34%;
+  --soft-teal: 174 70% 47%;
+  --warm-orange: 32 94% 65%;
+  --cool-gray: 214 22% 96%;
+  --deep-blue: 208 87% 23%;
+  --aqua-blue: 193 100% 43%;
+}
+
+/* Custom utility classes for animations and effects */
+.gradient-bg {
+  background: linear-gradient(135deg, hsl(208 62% 34%) 0%, hsl(174 70% 47%) 50%, hsl(193 100% 43%) 100%);
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in forwards;
+}
+
+.fade-in.animate {
+  animation-play-state: running;
+}
+
+/* Ensure animations trigger on page load */
+body {
+  font-family: 'Noto Sans KR', Poppins, sans-serif;
+}
+
+/* Force animation start */
+.fade-in, .slide-in-up {
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.service-card {
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+  border: 1px solid hsl(201 30% 91%);
+}
+
+.stats-bg {
+  background: linear-gradient(135deg, hsl(214 22% 96%) 0%, #ffffff 100%);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-up {
+  animation: slideInUp 0.6s ease-out forwards;
+}
+
+/* 3D card effects */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: rotateY(10deg) rotateX(10deg);
 }
 
 .dark {
