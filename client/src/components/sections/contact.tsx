@@ -54,7 +54,7 @@ export default function Contact() {
         } catch (keyError) {
           console.warn('서버에서 키를 가져올 수 없음, 기본값 사용');
           // 기본값으로 사용자가 제공한 키 사용
-          publicKey = "ADrMZJpxjlRV0PkDL";
+          publicKey = "mWXVV6YaOEOEn8idf";
         }
         
         if (!publicKey) {
