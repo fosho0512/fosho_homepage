@@ -233,15 +233,30 @@ export default function Contact() {
                     )}
                   />
                   
-                  <div className="flex items-start space-x-3">
-                    <Checkbox 
-                      id="privacy" 
-                      checked={privacyConsent}
-                      onCheckedChange={(checked) => setPrivacyConsent(checked as boolean)}
-                    />
-                    <label htmlFor="privacy" className="text-sm text-gray-600">
-                      개인정보 수집 및 이용에 동의합니다. (필수)
-                    </label>
+                  {/* Privacy Policy Section */}
+                  <div className="bg-gray-50 p-4 rounded-lg border">
+                    <div className="mb-3">
+                      <h4 className="font-semibold text-gray-900 mb-2">개인정보 수집 및 이용 동의</h4>
+                      <div className="text-sm text-gray-600 space-y-1">
+                        <p className="font-medium">포쇼는 아래와 같이 개인정보를 수집·이용합니다.</p>
+                        <p><span className="font-medium">수집 항목:</span> 이름, 병원명, 연락처, 문의내용</p>
+                        <p><span className="font-medium">이용 목적:</span> 문의 확인 및 답변 제공</p>
+                        <p><span className="font-medium">보유 기간:</span> 문의 처리 완료 후 1년간 보관 후 파기</p>
+                        <p className="text-xs text-gray-500 mt-2">※ 위 사항에 동의하지 않을 경우 문의 접수가 제한될 수 있습니다.</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-3">
+                      <Checkbox 
+                        id="privacy" 
+                        checked={privacyConsent}
+                        onCheckedChange={(checked) => setPrivacyConsent(checked as boolean)}
+                        className="mt-1"
+                      />
+                      <label htmlFor="privacy" className="text-sm text-gray-700 font-medium cursor-pointer">
+                        개인정보 수집 및 이용에 동의합니다. (필수)
+                      </label>
+                    </div>
                   </div>
                   
                   <Button 
