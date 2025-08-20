@@ -13,17 +13,35 @@ export default function Results() {
         
         {/* Key Metrics */}
         <div className="grid md:grid-cols-3 gap-8 mb-16 fade-in">
-          <div className="text-center bg-medical-blue text-white rounded-2xl p-8 card-hover transform transition-all duration-300 shadow-xl">
+          <div 
+            className="text-center text-white rounded-2xl p-8 card-hover transform transition-all duration-300"
+            style={{
+              background: "linear-gradient(135deg, #2c5aa0, #1e40af)",
+              boxShadow: "0 10px 30px rgba(44, 90, 160, 0.3)"
+            }}
+          >
             <div className="text-4xl font-bold mb-2 font-english">350%</div>
             <div className="text-lg">플레이스 노출량 증가</div>
           </div>
           
-          <div className="text-center bg-soft-teal text-white rounded-2xl p-8 card-hover transform transition-all duration-300 shadow-xl">
+          <div 
+            className="text-center text-white rounded-2xl p-8 card-hover transform transition-all duration-300"
+            style={{
+              background: "linear-gradient(135deg, #14b8a6, #0891b2)",
+              boxShadow: "0 10px 30px rgba(20, 184, 166, 0.3)"
+            }}
+          >
             <div className="text-4xl font-bold mb-2 font-english">200%</div>
             <div className="text-lg">신규 예약 전환율 상승</div>
           </div>
           
-          <div className="text-center bg-warm-orange text-white rounded-2xl p-8 card-hover transform transition-all duration-300 shadow-xl">
+          <div 
+            className="text-center text-white rounded-2xl p-8 card-hover transform transition-all duration-300"
+            style={{
+              background: "linear-gradient(135deg, #f59e0b, #d97706)",
+              boxShadow: "0 10px 30px rgba(245, 158, 11, 0.3)"
+            }}
+          >
             <div className="text-4xl font-bold mb-2 font-english">3배</div>
             <div className="text-lg">블로그 방문자 수 증가</div>
           </div>

@@ -9,7 +9,10 @@ export default function Services() {
         "진료별 키워드 분석 기반 콘텐츠 작성",
         "월 20건 이상 운영 + 정보성·브랜딩 병행"
       ],
-      color: "bg-medical-blue"
+      bgStyle: {
+        background: "linear-gradient(135deg, #2c5aa0, #1e40af)",
+        boxShadow: "0 4px 15px rgba(44, 90, 160, 0.3)"
+      }
     },
     {
       icon: MapPin,
@@ -18,7 +21,10 @@ export default function Services() {
         "설명·사진·진료 항목 업데이트",
         "검색 최적화 키워드 삽입"
       ],
-      color: "bg-soft-teal"
+      bgStyle: {
+        background: "linear-gradient(135deg, #14b8a6, #0891b2)",
+        boxShadow: "0 4px 15px rgba(20, 184, 166, 0.3)"
+      }
     },
     {
       icon: Trophy,
@@ -27,7 +33,10 @@ export default function Services() {
         "핵심 키워드 상위 노출 전략",
         "실시간 알고리즘 대응"
       ],
-      color: "bg-warm-orange"
+      bgStyle: {
+        background: "linear-gradient(135deg, #f59e0b, #d97706)",
+        boxShadow: "0 4px 15px rgba(245, 158, 11, 0.3)"
+      }
     },
     {
       icon: Lightbulb,
@@ -36,7 +45,10 @@ export default function Services() {
         "병원 슬로건, 핵심 메시지 기획",
         "모델·영상·블로그 연계 브랜딩 설계"
       ],
-      color: "bg-medical-blue"
+      bgStyle: {
+        background: "linear-gradient(135deg, #2c5aa0, #1e40af)",
+        boxShadow: "0 4px 15px rgba(44, 90, 160, 0.3)"
+      }
     },
     {
       icon: Megaphone,
@@ -45,7 +57,10 @@ export default function Services() {
         "브랜드 검색광고, 파워링크, 플레이스 광고",
         "인스타그램·페이스북 타겟 광고"
       ],
-      color: "bg-soft-teal"
+      bgStyle: {
+        background: "linear-gradient(135deg, #14b8a6, #0891b2)",
+        boxShadow: "0 4px 15px rgba(20, 184, 166, 0.3)"
+      }
     }
   ];
 
@@ -64,7 +79,10 @@ export default function Services() {
             const IconComponent = service.icon;
             return (
               <div key={index} className="bg-white rounded-2xl shadow-lg p-8 card-hover card-3d fade-in">
-                <div className={`w-16 h-16 ${service.color} rounded-xl flex items-center justify-center mb-6 shadow-lg`}>
+                <div 
+                  className="w-16 h-16 rounded-xl flex items-center justify-center mb-6" 
+                  style={service.bgStyle}
+                >
                   <IconComponent className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gray-900">{service.title}</h3>

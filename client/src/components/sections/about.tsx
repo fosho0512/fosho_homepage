@@ -33,7 +33,13 @@ export default function About() {
             
             <div className="grid md:grid-cols-3 gap-6 mt-12">
               <div className="text-center p-6 bg-white rounded-xl shadow-lg card-hover">
-                <div className="w-16 h-16 bg-medical-blue rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <div 
+                  className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                  style={{
+                    background: "linear-gradient(135deg, #2c5aa0, #1e40af)",
+                    boxShadow: "0 4px 15px rgba(44, 90, 160, 0.3)"
+                  }}
+                >
                   <Stethoscope className="text-white h-8 w-8" />
                 </div>
                 <h3 className="font-semibold mb-2 text-gray-900">병원 전문성</h3>
@@ -41,7 +47,13 @@ export default function About() {
               </div>
               
               <div className="text-center p-6 bg-white rounded-xl shadow-lg card-hover">
-                <div className="w-16 h-16 bg-soft-teal rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <div 
+                  className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                  style={{
+                    background: "linear-gradient(135deg, #14b8a6, #0891b2)",
+                    boxShadow: "0 4px 15px rgba(20, 184, 166, 0.3)"
+                  }}
+                >
                   <Rocket className="text-white h-8 w-8" />
                 </div>
                 <h3 className="font-semibold mb-2 text-gray-900">실행 중심</h3>
@@ -49,7 +61,13 @@ export default function About() {
               </div>
               
               <div className="text-center p-6 bg-white rounded-xl shadow-lg card-hover">
-                <div className="w-16 h-16 bg-warm-orange rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <div 
+                  className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                  style={{
+                    background: "linear-gradient(135deg, #f59e0b, #d97706)",
+                    boxShadow: "0 4px 15px rgba(245, 158, 11, 0.3)"
+                  }}
+                >
                   <Handshake className="text-white h-8 w-8" />
                 </div>
                 <h3 className="font-semibold mb-2 text-gray-900">신뢰와 투명성</h3>
